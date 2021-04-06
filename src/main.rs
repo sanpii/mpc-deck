@@ -9,10 +9,9 @@ fn main() {
     pretty_env_logger::init();
 
     let opt = Opt::from_args();
-    let f = std::fs::File::open(opt.input).unwrap();
+    let file = std::fs::File::open(opt.input).unwrap();
 
-    let mut d = evdev_rs::Device::new().unwrap();
-    d.set_fd(f).unwrap();
+    let d = evdev_rs::Device::new_from_file(file).unwrap();
 
     let mut last_event_time = evdev_rs::TimeVal::new(0, 0);
 
