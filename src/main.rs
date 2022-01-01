@@ -1,6 +1,6 @@
-use structopt::StructOpt;
+use clap::Parser;
 
-#[derive(StructOpt)]
+#[derive(Parser)]
 struct Opt {
     input: String,
 }
@@ -8,7 +8,7 @@ struct Opt {
 fn main() {
     pretty_env_logger::init();
 
-    let opt = Opt::from_args();
+    let opt = Opt::parse();
     let file = std::fs::File::open(opt.input).unwrap();
 
     let d = evdev_rs::Device::new_from_file(file).unwrap();
