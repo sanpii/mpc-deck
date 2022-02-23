@@ -33,8 +33,8 @@ fn main() {
             match key {
                 KEY_PLAYPAUSE => exec("mpc toggle"),
                 KEY_NEXTSONG => exec("mpc next"),
-                KEY_VOLUMEDOWN => exec("amixer -q -c 0 set Master 5%- unmute"),
-                KEY_VOLUMEUP => exec("amixer -q -c 0 set Master 5%+ unmute"),
+                KEY_VOLUMEDOWN => exec("mpc volume -5"),
+                KEY_VOLUMEUP => exec("mpc volume +5"),
                 _ => continue,
             }
 
