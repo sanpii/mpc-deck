@@ -8,7 +8,7 @@ struct Opt {
 }
 
 fn main() {
-    pretty_env_logger::init();
+    env_logger::init();
 
     let opt = Opt::parse();
     let file = std::fs::File::open(opt.input).unwrap();
