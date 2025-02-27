@@ -23,7 +23,7 @@ fn main() {
             Err(_) => continue,
         };
 
-        if let evdev_rs::enums::EventCode::EV_KEY(key) =  event.event_code {
+        if let evdev_rs::enums::EventCode::EV_KEY(key) = event.event_code {
             use evdev_rs::enums::EV_KEY::*;
 
             if event.time.tv_sec == last_event_time.tv_sec {
@@ -48,9 +48,7 @@ fn exec(command: &str) {
     let program = args.remove(0);
 
     log::info!("{} {:?}", program, args);
-    match std::process::Command::new(program)
-        .args(args)
-        .spawn() {
+    match std::process::Command::new(program).args(args).spawn() {
         Ok(_) => (),
         Err(err) => log::error!("{}", err),
     }
